@@ -1,0 +1,20 @@
+<div class="form-group">
+  <input
+    [class.is-invalid]="formControl.touched && formControl.invalid"
+    type="{{ type }}"
+    class="form-control"
+    [formControl]="formControl"
+    placeholder="{{ label }}"
+  />
+  <div *ngIf="formControl?.errors?.required" class="invalid-feedback">
+    Please enter a {{ label }}
+  </div>
+  <div *ngIf="formControl.errors?.minlength" class="invalid-feedback">
+    {{ label }} must be at least
+    {{ formControl.errors?.minlength["requiredLength"] }}
+  </div>
+  <div *ngIf="formControl.errors?.maxlength" class="invalid-feedback">
+    {{ label }} must be at most
+    {{ formControl.errors?.maxlength["requiredLength"] }}
+  </div>
+</div>

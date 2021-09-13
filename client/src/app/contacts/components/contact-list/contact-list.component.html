@@ -1,0 +1,28 @@
+<div class="container">
+  <div
+    *ngFor="let contact of contacts"
+    class="card rounded mb-3"
+    [ngClass]="{
+      male: contact.gender == 'male',
+      female: contact.gender == 'female'
+    }"
+  >
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">{{ contact.name }}</div>
+        <div class="col-9">{{ getContactInfo(contact) }}</div>
+        <div class="col-1">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+            (click)="onDelete(contact)"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

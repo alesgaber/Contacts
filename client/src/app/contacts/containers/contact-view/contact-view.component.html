@@ -1,0 +1,5 @@
+<app-contact-form (add)="onAdd($event)" [saving]="saving"></app-contact-form>
+<app-contact-list
+  [contacts]="contacts"
+  (delete)="onDelete($event)"
+></app-contact-list>

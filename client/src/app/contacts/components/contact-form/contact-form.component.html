@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="card mb-3">
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+            [class.is-invalid]="nameControl.touched && nameControl.invalid"
+          />
+          <div *ngIf="nameControl.errors?.required" class="invalid-feedback">
+            Please enter a name
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="gender"
+                formControlName="gender"
+                value="male"
+              />Male
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="gender"
+                formControlName="gender"
+                value="female"
+              />Female
+            </label>
+          </div>
+        </div>
+        <h5>Contact information</h5>
+        <hr />
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                class="form-control"
+                formControlName="email"
+                [class.is-invalid]="
+                  emailControl.touched && emailControl.invalid
+                "
+              />
+              <div *ngIf="emailControl.errors?.email" class="invalid-feedback">
+                Please check the email
+              </div>
+              <span class="info-sm"
+                >We'll never share your email with anyone else</span
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="telephone">Telephone</label>
+              <input
+                type="text"
+                id="telephone"
+                class="form-control"
+                formControlName="telephone"
+                [class.is-invalid]="
+                  telephoneControl.touched && telephoneControl.invalid
+                "
+              />
+              <div
+                *ngIf="telephoneControl.errors?.pattern"
+                class="invalid-feedback"
+              >
+                Please check the telephone number
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="float-right">
+        <button type="button" class="btn btn-light" (click)="resetForm()">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onSave()"
+          [disabled]="saving"
+        >
+          {{ getSaveButtonText() }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
