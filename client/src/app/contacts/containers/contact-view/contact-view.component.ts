@@ -58,6 +58,6 @@ export class ContactViewComponent implements OnInit {
             `You successfully added ${contact.name} to contacts.`
           );
         });
-    }, 500);
+    }, 300);
   }
 }
